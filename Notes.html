@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<style>
+.textarea {
+width: 900px;
+height: 500px;
+resize: none;
+background-color: #FCF306;
+border: none;
+box-shadow: 4px 4px #F3F3F3;
+font-family: Sans-Serif;
+transition: 0.3s ease;
+border-radius: 10px;
+padding: 10px;
+font-size: 20px;
+}-0;
+.textarea:hover {
+background-color: #E6DE04;
+border-radius: 20px;
+}
+
+.buttongroup {
+border: 1px solid;
+width: 150px;
+height: 225px;
+background-color: grey;
+border-radius: 10px;
+}
+button {
+margin: 10px;
+background-color: #00A8FF;
+border-radius: 5px;
+border: none;
+transition: ease 0.3s;
+}
+
+button:hover {
+background-color: #008AFF;
+color: white; 
+}
+</style>
+</head>
+<body>
+<center><textarea class="textarea" id="textarea"></textarea>
+<br>
+<div class="buttongroup"><button onclick="textalignleft()">Align Left</button>
+<button onclick="textalignright()">Align Right</button>
+<button onclick="textaligncenter()">Align Center</button>
+<button onclick="downloadtxt()">Download</button>
+<button onclick="plusfont()">Make Font Bigger</button>
+<button onclick="minusfont()">Make Font Smaller</button>
+
+</div>
+</center>
+<script>
+var font = 20;
+function textalignleft() {
+var textarea = document.getElementById("textarea")
+textarea.style.textAlign = "left"
+}
+function textalignright() {
+var textarea = document.getElementById("textarea")
+textarea.style.textAlign = "right"
+}
+function textaligncenter() {
+var textarea = document.getElementById("textarea")
+textarea.style.textAlign = "center"
+}
+
+function downloadtxt() {
+      const htmlContent = document.getElementById('textarea').value;
+      const blob = new Blob([htmlContent], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = "note" + '.txt';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+}
+
+function minusfont() {
+font = font - 1
+var textarea = document.getElementById("textarea")
+textarea.style.fontSize = font + "px"
+}
+
+function plusfont() {
+font++
+var textarea = document.getElementById("textarea")
+textarea.style.fontSize = font + "px"
+}
+</script>
+</body>
+</html>
